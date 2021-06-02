@@ -63,7 +63,7 @@
     "dot": "^1.1.2",
     "keccakjs": "^0.2.3",
     "minimist": "^1.2.0",
-    "solc": "^0.5.6"
+    "solc": "^0.8.0"
   },
   "files": [
     "package.json",
