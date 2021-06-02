@@ -13,7 +13,7 @@
     "build": "rm -rf lib/* && $(npm bin)/babel src -d lib",
     "prepublishOnly": "npm run build",
     "lint": "$(npm bin)/eslint src/ test/",
-    "precommit": "npm run lint && npm run test",
+    "precommit": "npm run lint",
     "semantic-release": "semantic-release"
   },
   "bin": {

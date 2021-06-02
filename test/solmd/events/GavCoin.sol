@@ -1,5 +1,10 @@
-pragma solidity >=0.4.22 <0.6.0;
+// // SPDX-FileCopyrightText: 2020 Tenderize <info@tenderize.me>
 
+// // SPDX-License-Identifier: GPL-3.0
+
+// /* See contracts/COMPILERS.md */
+
+pragma solidity ^0.8.0;
 
 // natspec example
 /**
@@ -11,7 +16,7 @@ contract GavCoin {
     address owner;
     uint exchangeRate;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
@@ -40,9 +45,7 @@ contract GavCoin {
     @notice change owner
     @dev dev
     @param _owner this is the owner
-    @return {
-        "previousOwner": "the previous owner"
-    }
+    @return previousOwner the previous owner
     */
     function setOwner(address _owner) public returns (address previousOwner) {
         previousOwner = owner;

@@ -12,7 +12,7 @@ export default function (src) {
     sources[src] = {
       urls: [`file://${src}`],
     };
-    const output = solc.compileStandardWrapper(JSON.stringify({
+    const input = JSON.stringify({
       language: 'Solidity',
       sources,
       settings: {
@@ -35,8 +35,34 @@ export default function (src) {
           },
         },
       },
-    }), findImports);
+    })
+    const output = solc.compile(input, { import: findImports })
+    // const output = solc.compileStandardWrapper(JSON.stringify({
+    //   language: 'Solidity',
+    //   sources,
+    //   settings: {
+    //     outputSelection: {
+    //       '*': {
+    //         '*': [
+    //           'abi',
+    //           'asm',
+    //           'ast',
+    //           'bin',
+    //           'bin-runtime',
+    //           'clone-bin',
+    //           'interface',
+    //           'opcodes',
+    //           'srcmap',
+    //           'srcmap-runtime',
+    //           'devdoc',
+    //           'userdoc',
+    //         ],
+    //       },
+    //     },
+    //   },
+    // }), findImports);
     const res = JSON.parse(output);
+    console.log(res)
     resolve({
       contracts: Object.keys(res.contracts).reduce((o, k) => {
         const file = k.split(':')[0];

@@ -2,6 +2,7 @@ import getFunctionSignature from '../helpers';
 import parseOutputs from './parseOutputs';
 
 export default function parseAbi(contract) {
+  console.log("hello pare abi")
   return contract.abi.map((method) => {
     const inputParams = method.inputs || [];
     const signature = method.name && `${method.name}(${inputParams.map(i => i.type).join(',')})`;
@@ -14,6 +15,7 @@ export default function parseAbi(contract) {
     // don't write this
     delete devDocs.params;
 
+    console.log("parse the outputs")
     const outputs = parseOutputs({ devDocs, method });
 
     return {
